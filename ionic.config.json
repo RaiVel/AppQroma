@@ -1,0 +1,7 @@
+{
+  "name": "app_qroma",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

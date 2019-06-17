@@ -1,0 +1,22 @@
+<ion-header>
+</ion-header>
+
+<ion-content class="login">
+  <img class='logo' src='assets/icon/qroma.svg' >
+  <p class="normal-red"><b class='txt_pri'>Qroma </b><b class='txt_sec'>Puntos</b></p>
+  <ion-card>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-input inputmode='email' pattern='^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$' type='email' [(ngModel)]="email" placeholder="User"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="key" slot="start"></ion-icon>
+      <ion-input inputmode='password' type='password' [(ngModel)]="pass" placeholder="Password" ></ion-input>
+    </ion-item>      
+  </ion-card> 
+      
+  <ion-card class="card_fondo" (click)="onLogin()" type="button">
+    <p><b>Iniciar Sesion</b></p>
+    <img src='assets/icon/fondo.png' height="40px" />
+  </ion-card>
+</ion-content>

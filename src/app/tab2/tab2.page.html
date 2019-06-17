@@ -1,0 +1,50 @@
+<ion-header *ngIf="user">
+  <ion-toolbar>
+    <ion-grid>
+        <ion-row justify-content-center>
+            <span class="top">Categoría {{user.socio}}</span>
+            <img id="categoria" class='cat' height="20px" width="20px" src='assets/icon/{{user.socio}}.svg' >
+        </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="user">
+  <p class="normal"><b class='txt_pri'>Qroma </b><b class='txt_sec'>Puntos</b>
+  <p class="grande"><b>{{user.puntos}} </b></p>
+  <div>
+    <ion-segment [(ngModel)]="puntos">
+        <ion-segment-button value="acumular">
+          <ion-label>Acumular</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="canjear">
+          <ion-label>Canjear</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+  </div>
+
+  <div [ngSwitch]="puntos">
+    <ion-list *ngSwitchDefault>
+      <ion-card *ngFor="let prod of productos" (click)="getAcumular(prod)" class="card_fondo">
+        <ion-item lines = "none" class= "back" width="auto" >
+            <ion-avatar slot="start">
+                <img src="{{prod.Link}}">
+              </ion-avatar>
+         <b class="boscuro">{{prod.nombre_producto}}</b><b class="bgrande_premio" slot="end">{{prod.puntos}}ptos</b>
+        </ion-item>
+      <img src='assets/icon/fondo_acumular.png' height="70px" />
+      </ion-card>
+     </ion-list>
+
+    <ion-list *ngSwitchCase="'canjear'">
+        <ion-card *ngFor="let prem of premios" class="card_fondo" (click)="getPremio(prem)">
+              <ion-item lines = "none" class= "back" width="auto" >
+                  <ion-avatar slot="start">
+                      <img src="{{prem.link}}">
+                    </ion-avatar>
+               <b class="boscuro">{{prem.premio}}</b><b class="bgrande_premio" slot="end">{{prem.pruntos}}ptos</b>
+              </ion-item>
+            <img src='assets/icon/fondo_premio.png' height="70px" />
+          </ion-card>
+      </ion-list>
+  </div>
+</ion-content>
